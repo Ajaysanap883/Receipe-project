@@ -8,65 +8,65 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url='/login_page/')
-def receipe(request):
+def student(request):
   #reading data
   if request.method=='POST':
     data=request.POST
     name=data.get('name')
-    description=data.get('description')
+    email=data.get('email')
     image=request.FILES.get('image')
   #creating object
-    Receipe.objects.create(
+    Student.objects.create(
       name=name,
-      description=description,
+      email=email,
       image=image,
       )
     
-    return redirect('/receipe/')
+    return redirect('/')
   
-  queryset=Receipe.objects.all()
+  queryset=Student.objects.all()
   
  
  #search function
   if request.GET.get('search'):
     queryset=queryset.filter(name__icontains =request.GET.get('search'))
 
-  context={'receipe':queryset}
-  return render(request,'receipes/receipe.html',context)
+  context={'student':queryset}
+  return render(request,'student.html',context)
 
 
 def delete(request,id):
-  queryset=Receipe.objects.get(id=id)
+  queryset=Student.objects.get(id=id)
   queryset.delete()
-  return redirect('/receipe/')
+  return redirect('/')
 
 
 @login_required(login_url='/login_page/')  
 def update(request,id):
 # to get the clicked object
-  queryset=Receipe.objects.get(id=id)
+  queryset=Student.objects.get(id=id)
 
 #get updated values
   if request.method=='POST':
       data=request.POST
       name=data.get('name')
-      description=data.get('description')
+      email=data.get('email')
       image=request.FILES.get('image')   
 
       queryset.name=name
-      queryset.description=description
+      queryset.email=email
       
       if image:
         queryset.image=image
       
       queryset.save()
-      return redirect('/receipe/') 
+      return redirect('/') 
 
 
 #queryset set me jo object liya usse render kara raha h page pe
-  context={'receipe':queryset}
+  context={'student':queryset}
 
-  return render(request,'receipes/update_receipe.html',context)
+  return render(request,'update_student.html',context)
 
 def register(request):
   if request.method=='POST':
@@ -116,7 +116,7 @@ def login_page(request):
       return redirect ('/login_page/')
     else:
       login(request,user)
-      return redirect('/receipe/')
+      return redirect('/')
   return render(request,'login.html')
 
 

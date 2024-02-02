@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-  path('receipe/',receipe),
+  path('',student),
   path('delete-receipe/<id>',delete),
   path('update-receipe/<id>',update),
   path('register/',register),

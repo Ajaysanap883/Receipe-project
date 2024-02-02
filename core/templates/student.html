@@ -12,7 +12,7 @@
     
 
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">  
       <div class="container-fluid">
         <a class="navbar-brand" href="/login/">HOME</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,19 +41,19 @@
       <div class="col-6 mx-auto card p-5 shadow-lg container-sm mt-5" >
         <form method="post" enctype="multipart/form-data" >
           {% csrf_token%}
-          <h1>Add Receipe</h1>
+          <h1>Add Student</h1>
           <hr>
 
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
+            <label for="exampleInputEmail1" class="form-label">Student Name</label>
             <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Receipe Description</label>
-            <textarea class="form-control" name="description" required></textarea>
+            <label for="exampleInputPassword1" class="form-label">Student email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Receipe Image</label>
+            <label for="exampleInputEmail1" class="form-label">Student Photo</label>
             <input type="file" required class="form-control" id="exampleInputEmail1" name="image" aria-describedby="emailHelp">
           </div>
           <button type="submit" class="btn btn-success container">Submit</button>
@@ -63,7 +63,7 @@
       <div class="col-2 mx-auto mt-5" >
         <form >
           <div class="mb-3 ">
-            <label for="exampleInputEmail1" class="form-label">Search Receipe</label>
+            <label for="exampleInputEmail1" class="form-label">Search Student</label>
             <input type="search" name="search" class="form-control" required>
           </div>
 
@@ -75,15 +75,15 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">NAME</th>
-            <th scope="col">DESCRIPTION</th>
-            <th scope="col">IMAGE</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">PASSPORT</th>
             <th>ACTIONS</th>
           </tr>
-      {%for r in receipe%}
+      {%for r in student%}
         
             <th scope="row">{{forloop.counter}}</th>
             <td>{{r.name}}</td>
-            <td>{{r.description}}</td>
+            <td>{{r.email}}</td>
             <td><img src="/media/{{r.image}}" height="100px"></td>
           <td class=" col-2 ">
             <!-- <a href="" class="btn btn-primary m-1">UPDATE</a> -->

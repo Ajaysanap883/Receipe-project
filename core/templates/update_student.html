@@ -1,0 +1,30 @@
+{%extends 'student.html'%}
+
+{%block content%}
+
+<div class="col-6 mx-auto card p-5 shadow-lg container-sm mt-5" >
+  <form method="post" enctype="multipart/form-data" >
+    {% csrf_token%}
+    <h1>Add Student</h1>
+    <hr>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Student Name</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="name" aria-describedby="emailHelp" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Student email</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Student Photo</label>
+      <input type="file" required class="form-control" id="exampleInputEmail1" name="image" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-success container">Submit</button>
+  </form>
+</div>
+
+
+  
+
+{%endblock%}
